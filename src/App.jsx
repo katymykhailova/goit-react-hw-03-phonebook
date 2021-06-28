@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { v4 as uuid } from 'uuid';
 
 import ContactList from './ContactList';
-import ContactFormC from './ContactFormC';
+import ContactForm from './ContactForm';
 
 import './App.css';
 import initialContacts from './contacts.json';
@@ -31,8 +31,7 @@ class App extends Component {
     return (
       <section>
         <h1>Phonebook</h1>
-        <ContactFormC onSubmit={this.addContact}></ContactFormC>
-        {/* <ContactForm onSubmit={this.addContact}></ContactForm> */}
+        <ContactForm onSubmit={this.addContact}></ContactForm>
         <h2>Contacts</h2>
         <label>
           Find contacts by name

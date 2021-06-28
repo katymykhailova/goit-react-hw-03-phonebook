@@ -1,4 +1,5 @@
-import { Formik } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
+import { Form, Input, Label, Button, Error } from './ContactForm.styles';
 
 export default function ContactForm({ onSubmit }) {
   return (
@@ -7,9 +8,9 @@ export default function ContactForm({ onSubmit }) {
       validate={values => {
         const errors = {};
         if (!values.name) {
-          errors.email = 'Required';
+          errors.name = 'Required';
         } else if (!values.number) {
-          errors.email = 'Required';
+          errors.number = 'Required';
         } else if (
           !/^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/i.test(
             values.name,
@@ -25,36 +26,56 @@ export default function ContactForm({ onSubmit }) {
         }
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
-        console.log(values);
+      onSubmit={(values, { setSubmitting, resetForm }) => {
         onSubmit(values);
         setSubmitting(false);
+        resetForm();
       }}
     >
-      {({ values, touched, errors, handleChange, handleSubmit }) => (
-        <form onSubmit={handleSubmit}>
-          <label>
+      {({
+        values,
+        touched,
+        errors,
+        handleChange,
+        handleSubmit,
+        isSubmitting,
+      }) => (
+        <Form onSubmit={handleSubmit}>
+          <Label>
             Name
-            <input
+            <Input
               type="text"
               name="name"
               onChange={handleChange}
               value={values.name}
             />
-            {errors.name}
-          </label>
-          <label>
+            {touched.name && errors.name && (
+              <Error>
+                Имя может состоять только из букв, апострофа, тире и пробелов.
+                Например Adrian, Jacob Mercer, Charles de Batz de Castelmore
+                d'Artagnan и т. п.
+              </Error>
+            )}
+          </Label>
+          <Label>
             Number
-            <input
+            <Input
               type="tel"
               name="number"
               onChange={handleChange}
               value={values.number}
             />
-            {errors.number}
-          </label>
-          <button type="submit">Add contacts</button>
-        </form>
+            {touched.number && errors.number && (
+              <Error>
+                Номер телефона должен состоять цифр и может содержать пробелы,
+                тире, круглые скобки и может начинаться с +
+              </Error>
+            )}
+          </Label>
+          <Button type="submit" disabled={isSubmitting}>
+            Add contacts
+          </Button>
+        </Form>
       )}
     </Formik>
   );
