@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types';
 import { FiPhone } from 'react-icons/fi';
 
-import { Contacts, ContactsItem, ContactsText } from './ContactList.styles';
+import {
+  Contacts,
+  ContactsItem,
+  ContactsText,
+  Button,
+} from './ContactList.styles';
 
-function ContactList({ contacts }) {
+function ContactList({ contacts, onDeleteContact }) {
   return (
     <Contacts>
       {contacts.map(({ id, name, number }) => (
@@ -12,6 +17,9 @@ function ContactList({ contacts }) {
           <ContactsText>
             {name}: {number}
           </ContactsText>
+          <Button type="button" onClick={() => onDeleteContact(id)}>
+            delete
+          </Button>
         </ContactsItem>
       ))}
     </Contacts>

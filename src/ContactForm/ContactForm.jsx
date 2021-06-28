@@ -1,5 +1,5 @@
-import { Formik, ErrorMessage } from 'formik';
-import { Form, Input, Label, Button, Error } from './ContactForm.styles';
+import { Formik } from 'formik';
+import { Form, Input, Label, Error, Button } from './ContactForm.styles';
 
 export default function ContactForm({ onSubmit }) {
   return (
