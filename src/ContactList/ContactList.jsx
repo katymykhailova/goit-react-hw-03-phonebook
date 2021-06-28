@@ -13,8 +13,8 @@ function ContactList({ contacts, onDeleteContact }) {
     <Contacts>
       {contacts.map(({ id, name, number }) => (
         <ContactsItem key={id}>
-          <FiPhone size="15" />
           <ContactsText>
+            <FiPhone size="15" />
             {name}: {number}
           </ContactsText>
           <Button type="button" onClick={() => onDeleteContact(id)}>

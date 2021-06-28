@@ -8,14 +8,19 @@ export const Contacts = styled.ul`
 export const ContactsItem = styled.li`
   display: flex;
   align-items: center;
-  justify-items: center;
+  justify-items: baseline;
+  justify-content: space-between;
+  width: 400px;
   margin-bottom: 10px;
   padding: 10px;
+
+  & svg {
+    color: #2196f3;
+    margin-right: 10px;
+  }
 `;
 
-export const ContactsText = styled.span`
-  margin-left: 10px;
-`;
+export const ContactsText = styled.span``;
 
 export const Button = styled.button`
   display: flex;

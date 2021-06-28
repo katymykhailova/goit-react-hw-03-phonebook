@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { v4 as uuid } from 'uuid';
 
+import Section from './Section';
 import ContactList from './ContactList';
 import ContactForm from './ContactForm';
 import Filter from './Filter';
@@ -55,7 +56,7 @@ class App extends Component {
     const visibleContacts = this.getVisibleContacts();
 
     return (
-      <section>
+      <Section>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact}></ContactForm>
         <h2>Contacts</h2>
@@ -64,7 +65,7 @@ class App extends Component {
           contacts={visibleContacts}
           onDeleteContact={this.deleteContact}
         ></ContactList>
-      </section>
+      </Section>
     );
   }
 }
