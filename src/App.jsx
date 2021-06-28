@@ -36,6 +36,10 @@ class App extends Component {
   };
 
   addContact = ({ name, number }) => {
+    if (this.state.contacts.find(contact => contact.name === name)) {
+      alert(`${name} is already in contacts.`);
+      return;
+    }
     const contact = {
       id: uuid(),
       name,

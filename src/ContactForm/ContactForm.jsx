@@ -72,7 +72,12 @@ export default function ContactForm({ onSubmit }) {
               </Error>
             )}
           </Label>
-          <Button type="submit" disabled={isSubmitting}>
+          <Button
+            type="submit"
+            disabled={
+              isSubmitting || values.name === '' || values.number === ''
+            }
+          >
             Add contacts
           </Button>
         </Form>
