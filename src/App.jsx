@@ -18,7 +18,7 @@ class App extends Component {
   };
 
   changeFilter = e => {
-    this.setState({ filter: e.currentTarget.value });
+    this.setState({ filter: e.target.value });
   };
 
   getVisibleContacts = () => {
@@ -61,6 +61,7 @@ class App extends Component {
         <ContactForm onSubmit={this.addContact}></ContactForm>
         <h2>Contacts</h2>
         <Filter filter={filter} onChange={this.changeFilter} />
+
         <ContactList
           contacts={visibleContacts}
           onDeleteContact={this.deleteContact}
