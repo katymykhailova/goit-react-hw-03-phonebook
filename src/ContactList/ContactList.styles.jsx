@@ -40,4 +40,8 @@ export const Button = styled.button`
   border: 0;
   border-radius: 4px;
   cursor: pointer;
+
+  &:hover {
+    background-color: #1e81d3;
+  }
 `;

@@ -39,8 +39,13 @@ export const Button = styled.button`
   border-radius: 4px;
   cursor: pointer;
 
-  &:disabled {
+  &:disabled,
+  &:disabled:hover {
     background-color: #7fbff3;
+  }
+
+  &:hover {
+    background-color: #1e81d3;
   }
 `;
 
