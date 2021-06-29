@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { DebounceInput } from 'react-debounce-input';
 
-import { Input, Label } from './Filter.styles';
+import { Label } from './Filter.styles';
 import css from './Filter.module.css';
 
 function Filter({ value, onChange }) {
@@ -14,7 +14,6 @@ function Filter({ value, onChange }) {
         onChange={onChange}
         className={css.DebounceInput}
       />
-      {/* <Input type="text" value={value} onChange={onChange} /> */}
     </Label>
   );
 }

@@ -7,7 +7,7 @@ import ContactForm from './ContactForm';
 import Filter from './Filter';
 
 import './App.css';
-import initialContacts from './contacts.json';
+import initialContacts from './data/contacts.json';
 
 class App extends Component {
   state = {
