@@ -1,33 +1,35 @@
 import { Formik } from 'formik';
 import { Form, Input, Label, Error, Button } from './ContactForm.styles';
 
+const validate = values => {
+  const errors = {};
+  if (!values.name) {
+    errors.name = 'Обязательное поле';
+  } else if (!values.number) {
+    errors.number = 'Обязательное поле';
+  } else if (
+    !/^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/i.test(
+      values.name,
+    )
+  ) {
+    errors.name =
+      "Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п.";
+  } else if (
+    !/\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/i.test(
+      values.number,
+    )
+  ) {
+    errors.number =
+      'Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +';
+  }
+  return errors;
+};
+
 export default function ContactForm({ onSubmit }) {
   return (
     <Formik
       initialValues={{ name: '', number: '' }}
-      validate={values => {
-        const errors = {};
-        if (!values.name) {
-          errors.name = 'Обязательное поле';
-        } else if (!values.number) {
-          errors.number = 'Обязательное поле';
-        } else if (
-          !/^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/i.test(
-            values.name,
-          )
-        ) {
-          errors.name =
-            "Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п.";
-        } else if (
-          !/\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/i.test(
-            values.number,
-          )
-        ) {
-          errors.number =
-            'Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +';
-        }
-        return errors;
-      }}
+      validate={validate}
       onSubmit={(values, { setSubmitting, resetForm }) => {
         onSubmit(values);
         setSubmitting(false);
