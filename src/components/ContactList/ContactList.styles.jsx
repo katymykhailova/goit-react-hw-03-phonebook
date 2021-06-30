@@ -13,9 +13,4 @@ export const ContactsItem = styled.li`
   width: 400px;
   margin-bottom: 10px;
   padding: 10px;
-
-  & svg {
-    color: #2196f3;
-    margin-right: 10px;
-  }
 `;
