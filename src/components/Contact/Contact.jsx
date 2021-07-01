@@ -3,16 +3,17 @@ import { FiPhone, FiTrash2 } from 'react-icons/fi';
 import Button from '../Button';
 
 import { ContactsText } from './Contact.styles';
+import { iconSize } from 'constants/index';
 
 function Contact({ name, number, onDeleteContact }) {
   return (
     <>
       <ContactsText>
-        <FiPhone size="15" />
+        <FiPhone size={iconSize.small} />
         {name}: {number}
       </ContactsText>
       <Button type="button" onClick={onDeleteContact} aria-label="add contact">
-        <FiTrash2 size="15" />
+        <FiTrash2 size={iconSize.small} />
       </Button>
     </>
   );
