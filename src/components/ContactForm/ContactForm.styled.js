@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled/macro';
 
 export const Form = styled.form`
   padding: 0;
@@ -16,7 +16,7 @@ export const Input = styled.input`
   height: 30px;
   padding-left: 15px;
   background-color: transparent;
-  border: 1px solid #2196f3;
+  border: 1px solid ${({ theme }) => theme.colors.blue};
   border-radius: 4px;
 `;
 
@@ -33,7 +33,7 @@ export const Button = styled.button`
   text-align: center;
   letter-spacing: 0.06em;
   text-decoration: none;
-  background-color: #2196f3;
+  background-color: ${({ theme }) => theme.colors.blue};
   color: #fff;
   border: 0;
   border-radius: 4px;
@@ -45,7 +45,7 @@ export const Button = styled.button`
   }
 
   &:hover {
-    background-color: #1e81d3;
+    background-color: ${({ theme }) => theme.colors.accentBlue};
   }
 `;
 

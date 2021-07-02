@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled/macro';
 
 export const SectionContainer = styled.section`
   max-width: 1170px;

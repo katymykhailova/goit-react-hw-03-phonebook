@@ -1,4 +1,4 @@
-import { IconButton } from './Button.styles';
+import { IconButton } from './Button.styled';
 import PropTypes from 'prop-types';
 
 function Button({ children, type, onClick, ...allyProps }) {

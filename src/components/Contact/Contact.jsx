@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { FiPhone, FiTrash2 } from 'react-icons/fi';
 import Button from '../Button';
 
-import { ContactsText } from './Contact.styles';
+import { ContactsText } from './Contact.styled';
 import { iconSize } from 'constants/index';
 
 function Contact({ name, number, onDeleteContact }) {

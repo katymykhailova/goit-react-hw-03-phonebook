@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import Contact from '../Contact';
 
-import { Contacts, ContactsItem } from './ContactList.styles';
+import { Contacts, ContactsItem } from './ContactList.styled';
 
 function ContactList({ contacts, onDeleteContact }) {
   return (

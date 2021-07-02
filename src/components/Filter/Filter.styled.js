@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import { DebounceInput } from 'react-debounce-input';
+import styled from '@emotion/styled/macro';
 
 export const Label = styled.label`
   max-width: 400px;
@@ -7,11 +8,11 @@ export const Label = styled.label`
   margin-left: 10px;
 `;
 
-export const Input = styled.input`
+export const FilterInput = styled(DebounceInput)`
   margin: 10px 0;
   height: 30px;
   padding-left: 15px;
   background-color: transparent;
-  border: 1px solid #2196f3;
+  border: 1px solid ${({ theme }) => theme.colors.blue};
   border-radius: 4px;
 `;

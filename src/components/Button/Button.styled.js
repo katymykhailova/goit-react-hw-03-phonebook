@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled/macro';
 
 export const IconButton = styled.button`
   display: flex;
@@ -9,18 +9,18 @@ export const IconButton = styled.button`
 
   text-align: center;
   letter-spacing: 0.06em;
-  background-color: #2196f3;
-  color: #fff;
+  background-color: ${({ theme }) => theme.colors.blue};
+  color: ${({ theme }) => theme.colors.white};
   border: 0;
   border-radius: 50%;
   cursor: pointer;
 
   & svg {
-    color: #ffffff;
+    color: ${({ theme }) => theme.colors.white};
     margin-right: 0;
   }
 
   &:hover {
-    background-color: #1e81d3;
+    background-color: ${({ theme }) => theme.colors.accentBlue};
   }
 `;

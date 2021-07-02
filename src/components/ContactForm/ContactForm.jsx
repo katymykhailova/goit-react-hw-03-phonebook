@@ -1,5 +1,5 @@
 import { Formik } from 'formik';
-import { Form, Input, Label, Error, Button } from './ContactForm.styles';
+import { Form, Input, Label, Error, Button } from './ContactForm.styled';
 
 const validate = values => {
   const errors = {};
