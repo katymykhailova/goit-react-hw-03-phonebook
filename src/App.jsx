@@ -14,7 +14,7 @@ import initialContacts from 'data/contacts.json';
 
 class App extends Component {
   state = {
-    contacts: initialContacts,
+    contacts: [],
     filter: '',
     name: '',
     number: '',
@@ -27,6 +27,8 @@ class App extends Component {
 
     if (parsedContacts) {
       this.setState({ contacts: parsedContacts });
+    } else {
+      this.setState({ contacts: initialContacts });
     }
   }
 
@@ -37,9 +39,6 @@ class App extends Component {
     if (nextContacts !== prevContacts) {
       localStorage.setItem('contacts', JSON.stringify(nextContacts));
     }
-
-    console.log(nextContacts.length);
-    console.log(prevContacts.length);
 
     if (
       nextContacts.length > prevContacts.length &&
@@ -69,10 +68,6 @@ class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    // if (this.state.contacts.find(contact => contact.name === name)) {
-    //   alert(`${name} is already in contacts.`);
-    //   return;
-    // }
     const contact = {
       id: uuid(),
       name,

@@ -5,7 +5,6 @@ export const Label = styled.label`
   max-width: 400px;
   display: flex;
   flex-direction: column;
-  /* margin-left: 10px; */
 `;
 
 export const FilterInput = styled(DebounceInput)`
