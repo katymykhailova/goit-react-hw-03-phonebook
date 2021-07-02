@@ -5,14 +5,15 @@ export const Label = styled.label`
   max-width: 400px;
   display: flex;
   flex-direction: column;
-  margin-left: 10px;
+  /* margin-left: 10px; */
 `;
 
 export const FilterInput = styled(DebounceInput)`
-  margin: 10px 0;
+  width: 345px;
+  margin: 10px 0 0 0;
   height: 30px;
   padding-left: 15px;
   background-color: transparent;
-  border: 1px solid ${({ theme }) => theme.colors.blue};
+  border: 1px solid ${({ theme }) => theme.colors.grey};
   border-radius: 4px;
 `;

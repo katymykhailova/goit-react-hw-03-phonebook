@@ -1,10 +1,14 @@
 import { Component } from 'react';
 import { v4 as uuid } from 'uuid';
+import { FiPlus } from 'react-icons/fi';
 
 import Section from 'components/Section';
 import ContactList from 'components/ContactList';
 import ContactForm from 'components/ContactForm';
 import Filter from 'components/Filter';
+import Button from 'components/Button';
+import Modal from './components/Modal';
+import ContainerFilter from './components/ContainerFilter';
 
 import initialContacts from 'data/contacts.json';
 
@@ -14,6 +18,7 @@ class App extends Component {
     filter: '',
     name: '',
     number: '',
+    showModal: false,
   };
 
   componentDidMount() {
@@ -31,6 +36,16 @@ class App extends Component {
 
     if (nextContacts !== prevContacts) {
       localStorage.setItem('contacts', JSON.stringify(nextContacts));
+    }
+
+    console.log(nextContacts.length);
+    console.log(prevContacts.length);
+
+    if (
+      nextContacts.length > prevContacts.length &&
+      prevContacts.length !== 0
+    ) {
+      this.toggleModal();
     }
   }
 
@@ -54,10 +69,10 @@ class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    if (this.state.contacts.find(contact => contact.name === name)) {
-      alert(`${name} is already in contacts.`);
-      return;
-    }
+    // if (this.state.contacts.find(contact => contact.name === name)) {
+    //   alert(`${name} is already in contacts.`);
+    //   return;
+    // }
     const contact = {
       id: uuid(),
       name,
@@ -68,21 +83,46 @@ class App extends Component {
     }));
   };
 
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
+
   render() {
-    const { filter } = this.state;
+    const { filter, showModal, contacts } = this.state;
     const visibleContacts = this.getVisibleContacts();
 
     return (
       <Section>
         <h1>Phonebook</h1>
-        <ContactForm onSubmit={this.addContact}></ContactForm>
+
+        <ContainerFilter>
+          <Filter filter={filter} onChange={this.changeFilter} />
+          <Button
+            type="button"
+            onClick={this.toggleModal}
+            aria-label="add contact"
+          >
+            <FiPlus size={16} />
+          </Button>
+        </ContainerFilter>
+
         <h2>Contacts</h2>
-        <Filter filter={filter} onChange={this.changeFilter} />
 
         <ContactList
           contacts={visibleContacts}
           onDeleteContact={this.deleteContact}
         ></ContactList>
+
+        {showModal && (
+          <Modal onClose={this.toggleModal}>
+            <ContactForm
+              onSubmit={this.addContact}
+              contacts={contacts}
+            ></ContactForm>
+          </Modal>
+        )}
       </Section>
     );
   }
