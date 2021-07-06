@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { v4 as uuid } from 'uuid';
-import { FiPlus } from 'react-icons/fi';
+import { FiUserPlus } from 'react-icons/fi';
 
 import Section from 'components/Section';
 import ContactList from 'components/ContactList';
@@ -9,6 +9,7 @@ import Filter from 'components/Filter';
 import Button from 'components/Button';
 import Modal from './components/Modal';
 import ContainerFilter from './components/ContainerFilter';
+import { iconSize } from 'constants/index';
 
 import initialContacts from 'data/contacts.json';
 
@@ -99,7 +100,7 @@ class App extends Component {
             onClick={this.toggleModal}
             aria-label="add contact"
           >
-            <FiPlus size={16} />
+            <FiUserPlus size={iconSize.small} />
           </Button>
         </ContainerFilter>
 
